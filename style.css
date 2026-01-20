@@ -9,6 +9,7 @@ body {
   background: #f8f8f8;           /* ← changed to soft white */
   color: #111;
   min-height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,4 +192,12 @@ body {
 }
 html, body {
   background-color: #ffffff !important;
+}
+html {
+  background-color: #ffffff;
+  height: 100%;
+}
+
+html, body {
+  background-color: #ffffff;
 }
