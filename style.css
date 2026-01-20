@@ -1,203 +1,268 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="color-scheme" content="light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>nBus Ticket</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #f8f8f8;           /* ← changed to soft white */
-  color: #111;
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  overflow: hidden;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #ffffff; /* ← ONLY CHANGE (was #000) */
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
 
-.ticket-container {
-  width: 100%;
-  max-width: 380px;
-  background: #ffffff;           /* ← changed to pure white */
-  border-radius: 32px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
-  position: relative;
-}
+    .ticket {
+      width: 100%;
+      max-width: 375px;
+      background: #0a0a0a;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+      position: relative;
+    }
 
-.close-btn {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  color: #000;
-  font-size: 18px;
-  font-weight: 600;
-  z-index: 10;
-}
+    .close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 16px;
+      color: white;
+      z-index: 10;
+      background: rgba(0,0,0,0.4);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
 
-.header {
-  background: #c8102e;
-  padding: 14px 16px;
-  text-align: center;
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  color: #ffffff;
-}
+    .header {
+      background: #c8102e;
+      padding: 12px 16px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 14px;
+      letter-spacing: 0.4px;
+      color: white;
+    }
 
-.content {
-  padding: 20px 20px 0;
-  text-align: center;
-}
+    .qr-container {
+      background: white;
+      padding: 16px;
+      margin: 20px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
 
-.qr-wrapper {
-  background: #fff;
-  padding: 16px;
-  border-radius: 20px;
-  margin: 20px auto;
-  width: 220px;
-  height: 220px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+    #qrcode {
+      width: 100% !important;
+      height: 100% !important;
+    }
 
-#qrcode {
-  width: 100% !important;
-  height: 100% !important;
-}
+    .qr-container img {
+      animation: pulse 2.2s infinite;
+    }
 
-.qr-wrapper img {
-  animation: pulse 2s infinite ease-in-out;
-}
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.65; }
-}
+    .text {
+      font-size: 15px;
+      line-height: 1.38;
+      margin: 0 20px 24px;
+      text-align: center;
+    }
 
-.description {
-  font-size: 14px;
-  line-height: 1.45;
-  margin: 16px 0 24px;
-  padding: 0 8px;
-  color: #222;                   /* dark text on white */
-}
+    .expiry-container {
+      position: relative;
+      height: 78px;
+      margin: 0 20px 12px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
 
-.expiry-wrapper {
-  margin: 20px 0;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: inset 0 0 12px rgba(0,0,0,0.08);
-}
+    .expiry-strip {
+      position: absolute;
+      inset: 0;
+      display: flex;
+    }
 
-.expiry-bar {
-  display: flex;
-  height: 56px;
-}
+    .strip {
+      flex: 1;
+    }
 
-.expiry-segment {
-  flex: 1;
-}
+    .expiry-time {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 19px;
+      font-weight: 700;
+      z-index: 2;
+      text-shadow: 1px 1px 3px black;
+      white-space: nowrap;
+      animation: sway 5s infinite ease-in-out;
+    }
 
-.blue { background: #0066cc; }
-.red   { background: #c8102e; }
-.green { background: #00aa44; }
+    @keyframes sway {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(6px); }
+    }
 
-.expiry-text {
-  background: #000;
-  color: #fff;
-  padding: 10px 0;
-  font-size: 17px;
-  font-weight: 700;
-  text-align: center;
-  animation: sway 4s infinite ease-in-out;
-}
+    .verified {
+      background: #ffcc00;
+      color: black;
+      font-weight: bold;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px 0;
+      margin: 0 20px 16px;
+      border-radius: 8px;
+    }
 
-@keyframes sway {
-  0%, 100% { transform: translateX(0); }
-  50%     { transform: translateX(8px); }
-}
+    .logo-area {
+      background: linear-gradient(to bottom, #4b0082, #301934);
+      padding: 24px 20px 20px;
+      text-align: center;
+    }
 
-.verified {
-  background: #ffcc00;
-  color: #000;
-  padding: 12px;
-  font-weight: 700;
-  font-size: 17px;
-  text-align: center;
-  margin: 16px 0;
-}
+    .hex-n {
+      width: 88px;
+      height: 52px;
+      background: white;
+      position: relative;
+      margin: 0 auto;
+    }
 
-.logo-section {
-  background: linear-gradient(to bottom, #4b0082, #2c004f);
-  padding: 24px 20px 20px;
-  text-align: center;
-}
+    .hex-n::before,
+    .hex-n::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      border-left: 44px solid transparent;
+      border-right: 44px solid transparent;
+    }
 
-.hexagon {
-  width: 90px;
-  height: 52px;
-  background: #fff;
-  position: relative;
-  margin: 0 auto 16px;
-}
+    .hex-n::before {
+      bottom: 100%;
+      border-bottom: 26px solid white;
+    }
 
-.hexagon::before,
-.hexagon::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 45px solid transparent;
-  border-right: 45px solid transparent;
-}
+    .hex-n::after {
+      top: 100%;
+      border-top: 26px solid white;
+    }
 
-.hexagon::before {
-  bottom: 100%;
-  border-bottom: 26px solid #fff;
-}
+    .hex-n span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 54px;
+      font-weight: bold;
+      color: #4b0082;
+    }
 
-.hexagon::after {
-  top: 100%;
-  border-top: 26px solid #fff;
-}
+    .cashback {
+      background: #0066cc;
+      color: white;
+      padding: 12px;
+      font-weight: bold;
+      text-align: center;
+      font-size: 15px;
+    }
 
-.hexagon span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 52px;
-  font-weight: bold;
-  color: #4b0082;
-  line-height: 1;
-}
+    .footer-bar {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      font-size: 13px;
+      color: #888;
+      border-top: 1px dashed #444;
+    }
+  </style>
+</head>
+<body>
 
-.cashback {
-  background: #0066cc;
-  color: #fff;
-  padding: 14px;
-  font-weight: 700;
-  font-size: 15px;
-  text-align: center;
-}
+<div class="ticket">
+  <div class="close">Close</div>
 
-.bottom-bar {
-  display: flex;
-  justify-content: space-between;
-  padding: 12px 20px;
-  font-size: 13px;
-  color: #555;
-  border-top: 1px dashed #ccc;
-}
-html, body {
-  background-color: #ffffff !important;
-}
-html {
-  background-color: #ffffff;
-  height: 100%;
-}
+  <div class="header">
+    nBus - 1618 - Direct Issue nBus - 1618
+  </div>
 
-html, body {
-  background-color: #ffffff;
-}
+  <div class="qr-container">
+    <div id="qrcode"></div>
+  </div>
+
+  <div class="text">
+    Unlimited travel on all National Express buses and any other bus operator that is part of the nBUS scheme within the West Midlands nBUS zone
+  </div>
+
+  <div class="expiry-container">
+    <div class="expiry-strip">
+      <div class="strip" style="background:#0066cc"></div>
+      <div class="strip" style="background:#c8102e"></div>
+      <div class="strip" style="background:#00aa44"></div>
+    </div>
+    <div class="expiry-time" id="expiry-time">19:48:27 14/12/2025</div>
+  </div>
+
+  <div class="verified">16-18 Verified ✓</div>
+
+  <div class="logo-area">
+    <div class="hex-n">
+      <span>n</span>
+    </div>
+  </div>
+
+  <div class="cashback">
+    NX Rewards Cashback
+  </div>
+
+  <div class="footer-bar">
+    <span>… Actions</span>
+    <span>≣ Details</span>
+  </div>
+</div>
+
+<script>
+  new QRCode(document.getElementById("qrcode"), {
+    text: "nBus-1618-DEMO-" + Date.now(),
+    width: 200,
+    height: 200,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
+  function updateExpiry() {
+    const expiry = new Date(Date.now() + 24*60*60*1000);
+    const time = expiry.toLocaleTimeString("en-GB", {hour12:false, hour:"2-digit", minute:"2-digit", second:"2-digit"});
+    const date = expiry.toLocaleDateString("en-GB", {day:"2-digit", month:"2-digit", year:"numeric"});
+    document.getElementById("expiry-time").textContent = time + " " + date;
+  }
+
+  updateExpiry();
+  setInterval(updateExpiry, 1000);
+</script>
+
+</body>
+</html>
