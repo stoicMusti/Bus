@@ -105,12 +105,19 @@ body {
 .green { background: #00aa44; }
 
 .expiry-text {
-  background: #000;
-  color: #fff;
-  padding: 10px 0;
-  font-size: 17px;
-  font-weight: 700;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;               /* ← bigger size (original is around 18-22px) */
+  font-weight: 900;              /* ← extra bold for emphasis */
   text-align: center;
+  white-space: nowrap;
+  z-index: 2;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.8);  /* stronger shadow for better contrast */
+  padding: 0 20px;               /* more breathing room on sides */
   animation: sway 4s infinite ease-in-out;
 }
 
