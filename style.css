@@ -46,6 +46,7 @@ body {
   font-weight: 700;
   font-size: 15px;
   letter-spacing: 0.5px;
+  colour: #ffffff
 }
 
 .content {
@@ -72,7 +73,7 @@ body {
 }
 
 .qr-wrapper img {
-  animation: pulse 2s infinite ease-in-out;
+  animation: pulse 1s infinite ease-in-out;
 }
 
 @keyframes pulse {
