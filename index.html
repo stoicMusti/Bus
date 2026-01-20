@@ -31,7 +31,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0;
       margin: 0;
     }
 
@@ -49,12 +48,8 @@
       position: absolute;
       top: 7px;
       right: 7px;
-      font-size: 0px;
-      color: black;
-      z-index: 10;
+      font-size: 0;
       background: transparent;
-      padding: 4px 10px;
-      border-radius: 20px;
     }
 
     .header {
@@ -90,7 +85,6 @@
       50% { opacity: 0.7; }
     }
 
-    /* EXPIRY BAR */
     .expiry-container {
       position: relative;
       height: 78px;
@@ -105,11 +99,8 @@
       display: flex;
     }
 
-    .strip {
-      flex: 1;
-    }
+    .strip { flex: 1; }
 
-    /* SWAYING EXPIRY TIME */
     .expiry-time {
       position: absolute;
       inset: 0;
@@ -131,9 +122,8 @@
       100% { transform: translateX(-28.5px); }
     }
 
-    /* VERIFIED BAR */
     .verified {
-      background: #ffcc00;
+      background: #ffd84d;
       color: black;
       font-weight: bold;
       font-size: 18px;
@@ -143,48 +133,49 @@
       border-radius: 8px;
     }
 
-    /* LOGO AREA WITH HEX N */
+    /* LOGO AREA */
     .logo-area {
       padding: 0 20px 4px;
       text-align: center;
       background: linear-gradient(to bottom, #4b0082, #301934);
     }
 
-    /* Wrapper for white outline */
-    .logo-n-wrapper {
-      width: 82px; 
-      height: 82px;
+    /* HEX LOGO (UPDATED PART) */
+    .logo-n {
+      width: 72px;
+      height: 72px;
+      background: #4b0082;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
       clip-path: polygon(
-        25% 6.7%, 75% 6.7%, 
-        100% 50%, 75% 93.3%, 
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
         25% 93.3%, 0% 50%
-      ); /* hex shape */
-      border: 4px solid #ffffff; /* visible white outline */
+      );
     }
 
-    .logo-n {
-      width: 72px;
-      height: 72px;
-      background: #4b0082; /* purple inside */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      clip-path: inherit; /* match hex */
+    .logo-n::before {
+      content: "";
+      position: absolute;
+      inset: -3px;
+      border: 2px solid #f2f2f2;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+      pointer-events: none;
     }
 
     .logo-n span {
       font-size: 42px;
       font-weight: bold;
-      color: #fdfdfd; /* N color white */
-      position: relative;
+      color: #fdfdfd;
     }
 
-    /* NX REWARDS CASHBACK BAR */
     .cashback {
       background: #0066cc;
       color: white;
@@ -192,7 +183,6 @@
       font-weight: bold;
       text-align: center;
       font-size: 15px;
-      margin: 0;
     }
 
     .footer-bar {
@@ -209,7 +199,7 @@
 <body>
 
 <div class="ticket">
-  <div class="close">Close</div>
+  <div class="close"></div>
 
   <div class="header">
     nBus - 1618 - Direct Issue nBus - 1618
@@ -229,22 +219,18 @@
       <div class="strip" style="background:#c2185b"></div>
       <div class="strip" style="background:#8bc34a"></div>
     </div>
-    <div class="expiry-time" id="expiry-time">19:48:27 20/01/2026</div>
+    <div class="expiry-time" id="expiry-time"></div>
   </div>
 
   <div class="verified">16-18 Verified ✓</div>
 
   <div class="logo-area">
-    <div class="logo-n-wrapper">
-      <div class="logo-n">
-        <span>n</span>
-      </div>
+    <div class="logo-n">
+      <span>n</span>
     </div>
   </div>
 
-  <div class="cashback">
-    NX Rewards Cashback
-  </div>
+  <div class="cashback">NX Rewards Cashback</div>
 
   <div class="footer-bar">
     <span>… Actions</span>
@@ -263,10 +249,24 @@
   });
 
   function updateExpiry() {
-    const now = new Date(); // current live time
-    const timeStr = now.toLocaleTimeString("en-GB", {hour12:false, hour:"2-digit", minute:"2-digit", second:"2-digit"});
-    const dateStr = now.toLocaleDateString("en-GB", {day:"2-digit", month:"2-digit", year:"numeric"});
-    document.getElementById("expiry-time").textContent = `${timeStr} ${dateStr}`;
+    const now = new Date();
+
+    const timeStr = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    }).format(now);
+
+    const dateStr = new Intl.DateTimeFormat('en-GB', {
+      timeZone: 'Europe/London',
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric'
+    }).format(now);
+
+    document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
   }
 
   updateExpiry();
