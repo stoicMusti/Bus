@@ -1,22 +1,105 @@
-/* ... keep all your previous styles (body, ticket-container, header, qr-wrapper, description, verified, logo-section, hexagon, cashback, bottom-bar etc.) ... */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-/* Updated expiry area - text overlaid directly on the colorful bar */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.ticket-container {
+  width: 100%;
+  max-width: 380px;
+  background: #0a0a0a;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.9);
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  z-index: 10;
+  background: rgba(0,0,0,0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.header {
+  background: #c8102e;
+  padding: 14px 16px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.5px;
+}
+
+.content {
+  padding: 20px 16px;
+  text-align: center;
+}
+
+.qr-wrapper {
+  background: white;
+  padding: 16px;
+  border-radius: 16px;
+  margin: 20px auto;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+#qrcode {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.qr-wrapper img {
+  animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.65; }
+}
+
+.description {
+  font-size: 15px;
+  line-height: 1.45;
+  margin: 16px 0;
+}
 
 .expiry-wrapper {
+  position: relative;
+  height: 80px;
   margin: 20px 0;
-  border-radius: 16px;
+  border-radius: 12px;
   overflow: hidden;
-  position: relative;          /* allows absolute positioning inside */
-  height: 80px;                /* fixed height to fit bar + text overlay */
-  box-shadow: inset 0 0 12px rgba(0,0,0,0.15);
 }
 
 .expiry-bar {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  height: 100%;                /* full height of wrapper */
+  width: 100%;
+  height: 100%;
   display: flex;
 }
 
@@ -24,21 +107,24 @@
   flex: 1;
 }
 
+.blue { background: #0066cc; }
+.red   { background: #c8102e; }
+.green { background: #00aa44; }
+
 .expiry-text {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: #ffffff;
-  font-size: 18px;             /* bigger & closer to real */
+  color: white;
+  font-size: 18px;
   font-weight: 700;
   text-align: center;
   white-space: nowrap;
-  z-index: 2;                  /* on top of bars */
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.7);  /* subtle shadow for readability on colors */
-  animation: sway 2s infinite ease-in-out;
-  padding: 0 12px;             /* small breathing room */
-  pointer-events: none;        /* doesn't block interactions */
+  z-index: 2;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+  animation: sway 4s infinite ease-in-out;
+  padding: 0 16px;
 }
 
 @keyframes sway {
@@ -46,14 +132,72 @@
   50%      { transform: translate(-50%, -50%) translateX(8px); }
 }
 
-/* Verified bar - tighter spacing */
 .verified {
   background: #ffcc00;
   color: #000;
-  padding: 12px;
-  font-weight: 800;
-  font-size: 19px;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 18px;
   text-align: center;
-  margin: 8px 0 16px;          /* reduced top/bottom margin for closer feel */
-  letter-spacing: 0.5px;
+  margin: 8px 0 16px;  /* tight spacing */
+}
+
+.logo-section {
+  background: linear-gradient(to bottom, #4b0082, #301934);
+  padding: 20px;
+  text-align: center;
+}
+
+.hexagon {
+  width: 90px;
+  height: 52px;
+  background: white;
+  position: relative;
+  margin: 0 auto;
+}
+
+.hexagon::before,
+.hexagon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+}
+
+.hexagon::before {
+  bottom: 100%;
+  border-bottom: 26px solid white;
+}
+
+.hexagon::after {
+  top: 100%;
+  border-top: 26px solid white;
+}
+
+.hexagon span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 52px;
+  font-weight: bold;
+  color: #4b0082;
+}
+
+.cashback {
+  background: #0066cc;
+  color: white;
+  padding: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px;
+  font-size: 13px;
+  color: #888;
+  border-top: 1px dashed #444;
 }
