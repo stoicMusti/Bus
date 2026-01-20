@@ -140,49 +140,29 @@
       font-size: 18px;
       text-align: center;
       padding: 10px 0;
-      margin: 0 20px 4px; /* removed bottom margin to touch logo */
+      margin: 0 20px 0; /* touches logo */
       border-radius: 8px;
     }
 
-    /* LOGO AREA */
+    /* LOGO AREA WITH JUST THE N */
     .logo-area {
-      background: linear-gradient(to bottom, #4b0082, #301934);
-      padding: 0 20px 4px; /* removed top padding so it touches verified bar */
+      padding: 0 20px 4px; /* small gap below logo for NX Rewards bar */
       text-align: center;
+      background: linear-gradient(to bottom, #4b0082, #301934);
     }
 
-    .hex-n {
+    .logo-n {
       width: 88px;
       height: 52px;
       background: white;
-      position: relative;
       margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px; /* optional */
     }
 
-    .hex-n::before,
-    .hex-n::after {
-      content: "";
-      position: absolute;
-      width: 0;
-      border-left: 44px solid transparent;
-      border-right: 44px solid transparent;
-    }
-
-    .hex-n::before {
-      bottom: 100%;
-      border-bottom: 26px solid white;
-    }
-
-    .hex-n::after {
-      top: 100%;
-      border-top: 26px solid white;
-    }
-
-    .hex-n span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+    .logo-n span {
       font-size: 54px;
       font-weight: bold;
       color: #4b0082;
@@ -196,7 +176,7 @@
       font-weight: bold;
       text-align: center;
       font-size: 15px;
-      margin: 8px 0 0 0; /* small gap above this bar */
+      margin: 0; /* small gap already added in logo-area */
     }
 
     .footer-bar {
@@ -239,7 +219,7 @@
   <div class="verified">16-18 Verified ✓</div>
 
   <div class="logo-area">
-    <div class="hex-n">
+    <div class="logo-n">
       <span>n</span>
     </div>
   </div>
