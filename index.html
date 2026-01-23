@@ -143,39 +143,40 @@
 
     /* UPDATED n LOGO (matches app style) */
         /* The main hexagon container (hollow center) */
+        /* THE PERFECT 6-SIDED RING */
     .logo-n {
-      width: 85px;
-      height: 85px;
+      width: 90px;
+      height: 90px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      background: transparent;
-      /* Shapes the container into a hexagon */
-      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+      background: white; /* Outer color of the ring */
+      /* Perfect 6-sided hexagon shape */
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
 
-    /* This creates the white hexagonal ring outline */
-    .logo-n::before {
+    /* This creates the purple middle to make it look like a ring */
+    .logo-n::after {
       content: "";
       position: absolute;
-      inset: 0;
-      background: transparent;
-      border: 5px solid white; /* Thickness of the ring */
-      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-      box-sizing: border-box;
+      inset: 4px; /* Thickness of the ring */
+      /* Matches your purple area gradient */
+      background: linear-gradient(to bottom, #4b0082, #301934); 
+      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       z-index: 1;
     }
 
-    /* Styles the 'n' to be white and centered */
     .logo-n span {
       position: relative;
-      font-size: 50px;
+      font-size: 52px;
       font-weight: bold;
-      color: #ffffff !important; /* Forces the 'n' to be white */
+      color: white; 
       font-family: Arial, sans-serif;
       z-index: 2;
+      line-height: 1;
+
     }
 
     .cashback {
