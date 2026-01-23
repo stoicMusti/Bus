@@ -142,39 +142,40 @@
     }
 
     /* UPDATED n LOGO (matches app style) */
+        /* The main hexagon container (hollow center) */
     .logo-n {
-      width: 74px;
-      height: 74px;
-      background: linear-gradient(to bottom, #5b2a86, #4a1f6f);
+      width: 85px;
+      height: 85px;
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      clip-path: polygon(
-        25% 6.7%, 75% 6.7%,
-        100% 50%, 75% 93.3%,
-        25% 93.3%, 0% 50%
-      );
+      background: transparent;
+      /* Shapes the container into a hexagon */
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
     }
 
+    /* This creates the white hexagonal ring outline */
     .logo-n::before {
       content: "";
       position: absolute;
-      inset: -6px;
-      background: #ffffff;
-      clip-path: polygon(
-        25% 6.7%, 75% 6.7%,
-        100% 50%, 75% 93.3%,
-        25% 93.3%, 0% 50%
-      );
-      z-index: -1;
+      inset: 0;
+      background: transparent;
+      border: 5px solid white; /* Thickness of the ring */
+      clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+      box-sizing: border-box;
+      z-index: 1;
     }
 
+    /* Styles the 'n' to be white and centered */
     .logo-n span {
-      font-size: 44px;
-      font-weight: 600;
-      color: #f2f2f2;
+      position: relative;
+      font-size: 50px;
+      font-weight: bold;
+      color: #ffffff !important; /* Forces the 'n' to be white */
+      font-family: Arial, sans-serif;
+      z-index: 2;
     }
 
     .cashback {
