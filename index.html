@@ -143,37 +143,38 @@
 
     /* UPDATED n LOGO (matches app style) */
     .logo-n {
-  width: 86px;
-  height: 76px;
-  background: transparent;
-  margin: 0 auto;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      width: 74px;
+      height: 74px;
+      background: linear-gradient(to bottom, #5b2a86, #4a1f6f);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+    }
 
-.logo-n::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: transparent;
-  border: 4px solid rgba(255,255,255,0.9);
-  clip-path: polygon(
-    18% 8%, 82% 8%,
-    100% 50%,
-    82% 92%, 18% 92%,
-    0% 50%
-  );
-  border-radius: 6px;
-}
+    .logo-n::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      background: #ffffff;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+      z-index: -1;
+    }
 
-.logo-n span {
-  font-size: 48px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  transform: translateY(2px);
-}
+    .logo-n span {
+      font-size: 44px;
+      font-weight: 600;
+      color: #f2f2f2;
     }
 
     .cashback {
