@@ -117,9 +117,9 @@
 }
 
 @keyframes sway {
-  0%   { transform: translateX(-32.5px); }
-  50%  { transform: translateX(32.5px); }
-  100% { transform: translateX(-32.5px); }
+  0%   { transform: translateX(-34px); }
+  50%  { transform: translateX(34px); }
+  100% { transform: translateX(-34px); }
 }
 
     .verified {
@@ -252,15 +252,28 @@
 </div>
 
 <script>
-  new QRCode(document.getElementById("qrcode"), {
-    text: "nBus-1618-DEMO-" + Date.now(),
-    width: 200,
-    height: 200,
-    colorDark: "#000000",
-    colorLight: "#ffffff",
-    correctLevel: QRCode.CorrectLevel.H
-  });
+  // Function to generate QR code
+  function generateQRCode() {
+    const qrContainer = document.getElementById("qrcode");
+    qrContainer.innerHTML = ""; // clear old QR code
 
+    new QRCode(qrContainer, {
+      text: "nBus-1618-DEMO-" + Date.now(), // unique each time
+      width: 200,
+      height: 200,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  }
+
+  // Generate QR code initially
+  generateQRCode();
+
+  // Refresh QR code every 3 seconds
+  setInterval(generateQRCode, 3000);
+
+  // Expiry timer function (unchanged)
   function updateExpiry() {
     const now = new Date();
 
@@ -282,9 +295,9 @@
     document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
   }
 
+  // Update expiry timer immediately and every second
   updateExpiry();
   setInterval(updateExpiry, 1000);
 </script>
-
 </body>
 </html>
