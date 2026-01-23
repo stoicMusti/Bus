@@ -144,15 +144,16 @@
     /* UPDATED n LOGO (matches app style) */
         /* The main hexagon container (hollow center) */
         /* THE PERFECT 6-SIDED RING */
+        /* THE FLATTENED 6-SIDED RING WITH FAINT WHITE */
     .logo-n {
       width: 90px;
-      height: 90px;
+      height: 70px; /* Reduced height to make it vertically shorter */
       margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      background: white; /* Outer color of the ring */
+      background: rgba(255, 255, 255, 0.6); /* Faint white (60% opacity) */
       /* Perfect 6-sided hexagon shape */
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
@@ -161,8 +162,7 @@
     .logo-n::after {
       content: "";
       position: absolute;
-      inset: 4px; /* Thickness of the ring */
-      /* Matches your purple area gradient */
+      inset: 3px; /* Slightly thinner ring thickness */
       background: linear-gradient(to bottom, #4b0082, #301934); 
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       z-index: 1;
@@ -170,9 +170,9 @@
 
     .logo-n span {
       position: relative;
-      font-size: 52px;
+      font-size: 48px; /* Slightly smaller to fit the flatter shape */
       font-weight: bold;
-      color: white; 
+      color: rgba(255, 255, 255, 0.9); /* Also slightly faint white */
       font-family: Arial, sans-serif;
       z-index: 2;
       line-height: 1;
