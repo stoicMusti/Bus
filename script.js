@@ -1,4 +1,4 @@
-// Generate QR code
+// Generate QR code once
 new QRCode(document.getElementById("qrcode"), {
   text: "nBus-1618-Unlimited-WestMidlands-" + Date.now(),
   width: 200,
@@ -8,17 +8,16 @@ new QRCode(document.getElementById("qrcode"), {
   correctLevel: QRCode.CorrectLevel.H
 });
 
-// Live expiry (current time + 24 hours)
+// Live expiry (current time)
 function updateExpiry() {
   const now = new Date();
-  const expiry = new Date();
-  const timeStr = expiry.toLocaleTimeString('en-GB', {
+  const timeStr = now.toLocaleTimeString('en-GB', {
     hour12: false,
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit'
   });
-  const dateStr = expiry.toLocaleDateString('en-GB', {
+  const dateStr = now.toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric'
@@ -26,5 +25,6 @@ function updateExpiry() {
   document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
 }
 
-updateExpiry();                    // Run immediately
-setInterval(updateExpiry, 1000);   // Update every second
+// Update expiry immediately and every second
+updateExpiry();
+setInterval(updateExpiry, 1000);
