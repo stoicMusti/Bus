@@ -142,55 +142,48 @@
     }
 
     /* UPDATED n LOGO (matches app style) */
-    /* UPDATED LOGO ONLY - NO OTHER CHANGES */
-.logo-n {
-  width: 82px;
-  height: 82px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  /* Creates the hexagonal shape */
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-  /* Darker purple background for the shape itself */
-  background: #3a154d; 
-}
+    .logo-n {
+      width: 74px;
+      height: 74px;
+      background: linear-gradient(to bottom, #5b2a86, #4a1f6f);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+    }
 
-/* Creates the white hexagonal outline seen in the image */
-.logo-n::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  padding: 4px; /* Thickness of the border */
-  background: #ffffff;
-  -webkit-mask: 
-     content-box, 
-     border-box;
-  -webkit-mask-composite: source-out;
-  mask-composite: subtract;
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
-}
+    .logo-n::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      background: #ffffff;
+      clip-path: polygon(
+        25% 6.7%, 75% 6.7%,
+        100% 50%, 75% 93.3%,
+        25% 93.3%, 0% 50%
+      );
+      z-index: -1;
+    }
 
-.logo-n span {
-  font-size: 50px;
-  font-weight: 600;
-  color: #ffffff;
-  opacity: 0.8;
-  font-family: Arial, sans-serif;
-  /* Ensures the letter stays above the border */
-  z-index: 2; 
-}
-
+    .logo-n span {
+      font-size: 44px;
+      font-weight: 600;
+      color: #f2f2f2;
     }
 
     .cashback {
       background: #0586c9;
       color: white;
       padding: 10px 0;
-      font-weight: 390;
+      font-weight: 370;
       text-align: center;
-      font-size: 17.5px;
+      font-size: 18px;
       margin: 8px 20px 40px;
     }
 
