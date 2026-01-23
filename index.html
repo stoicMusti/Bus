@@ -141,11 +141,11 @@
       margin: 0 20px;
     }
 
-    /* HEX LOGO (UPDATED PART) */
+    /* UPDATED n LOGO (matches app style) */
     .logo-n {
-      width: 72px;
-      height: 72px;
-      background: #430083;
+      width: 74px;
+      height: 74px;
+      background: linear-gradient(to bottom, #5b2a86, #4a1f6f);
       margin: 0 auto;
       display: flex;
       align-items: center;
@@ -161,20 +161,20 @@
     .logo-n::before {
       content: "";
       position: absolute;
-      inset: -3px;
-      border: 2px solid #f2f2f2;
+      inset: -6px;
+      background: #ffffff;
       clip-path: polygon(
         25% 6.7%, 75% 6.7%,
         100% 50%, 75% 93.3%,
         25% 93.3%, 0% 50%
       );
-      pointer-events: none;
+      z-index: -1;
     }
 
     .logo-n span {
-      font-size: 42px;
-      font-weight: bold;
-      color: #fdfdfd;
+      font-size: 44px;
+      font-weight: 600;
+      color: #f2f2f2;
     }
 
     .cashback {
@@ -184,8 +184,8 @@
       font-weight: 370;
       text-align: center;
       font-size: 18px;
-      margin-top: 8px;
-      margin-bottom: 40px
+      margin: 8px 20px 40px;
+      border-radius: 12px;
     }
 
     .footer-bar {
