@@ -118,7 +118,15 @@
   font-size: 22px;
   font-weight: 500;
   z-index: 2;
-  text-shadow: 4px 4px 8px rgba(0,0,0,1);
+  text-shadow:
+  /* thin black outline */
+  -0.6px 0 black,
+   0.6px 0 black,
+   0 -0.6px black,
+   0 0.6px black,
+
+  /* soft blurred shadow */
+  0 1.5px 2.5px rgba(0, 0, 0, 0.45);
   white-space: nowrap;
   animation: sway 2.8s infinite ease-in-out; /* keep swaying */
 }
