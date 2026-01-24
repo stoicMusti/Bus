@@ -166,13 +166,18 @@
         /* FLATTENED HEXAGON - THICKER & DARKER FAINT WHITE */
      /* FLATTENED HEXAGON - THICKER & HIGH VISIBILITY */
     .logo-n {
-  width: 90px;
-  height: 70px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      width: 90px;
+      height: 70px; 
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border-radius: 0 0 12px 12px;
+      /* Increased opacity to 0.7 for better visibility */
+      background: rgba(255, 255, 255, 0.7); 
+      clip-path: polygon(30% 6%, 70% 6%, 94% 50%, 70% 94%, 30% 94%, 6% 50%);
+    }
 
     .logo-n::after {
       content: "";
@@ -249,36 +254,11 @@
 
   <div class="verified">16-18 Verified ✓</div>
 
-  <div class="logo-n">
-  <svg viewBox="0 0 100 86" width="90" height="70">
-    <!-- outer ring -->
-    <path
-      d="M25 5 H75 L95 43 L75 81 H25 L5 43 Z"
-      fill="rgba(255,255,255,0.7)"
-      stroke="none"
-      stroke-linejoin="round"
-    />
-
-    <!-- inner cutout -->
-    <path
-      d="M32 14 H68 L82 43 L68 72 H32 L18 43 Z"
-      fill="#4b0082"
-      stroke-linejoin="round"
-    />
-
-    <!-- n -->
-    <text
-      x="50%"
-      y="58%"
-      text-anchor="middle"
-      dominant-baseline="middle"
-      font-size="64"
-      font-weight="700"
-      fill="rgba(255,255,255,0.7)"
-      font-family="Arial, sans-serif"
-    >n</text>
-  </svg>
-</div>
+  <div class="logo-area">
+    <div class="logo-n">
+      <span>n</span>
+    </div>
+  </div>
 
   <div class="cashback">NX Rewards Cashback</div>
 
