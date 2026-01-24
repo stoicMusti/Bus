@@ -275,13 +275,14 @@
     qrContainer.innerHTML = ""; // clear old QR code
 
     new QRCode(qrContainer, {
-      text: "nBus-1618-DEMO-" + Date.now(), // unique each time
-      width: 200,
-      height: 200,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
+  text: "nBus-1618-DirectIssue-" + Date.now(),  // keep dynamic or make static if you want
+  width: 200,                  // keep your original size – no box change
+  height: 200,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.H,  // crucial – matches real ticket error correction
+  dotScale: 0.9                // THIS is the key for matching patterns & boldness
+});
   }
 
   // Generate QR code initially
