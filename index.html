@@ -275,12 +275,12 @@
     qrContainer.innerHTML = ""; // clear old QR code
 
     new QRCode(qrContainer, {
-  text: "nBus - 1618 - Direct Issue nBus - 1618 Unlimited travel on all National Express buses and any other bus operator that is part of the nBus scheme within the West Midlands nBus zone 16-18 Verified",  // long text = forces version 5–7+ → central-ish alignment pattern appears
+  text: "nBus-1618-DirectIssue-nBus-1618-" + Date.now(),  // longer text → higher version → more likely to have central alignment pattern
   width: 200,
   height: 200,
   colorDark: "#000000",
   colorLight: "#ffffff",
-  correctLevel: QRCode.CorrectLevel.H  // required for real-ticket-like patterns
+  correctLevel: QRCode.CorrectLevel.H  // This is what triggers alignment patterns, including the middle one
 });
   }
 
