@@ -48,16 +48,21 @@
 
     /* Close text */
     .top-strip .close {
-      font-size: 17px;
-      font-weight: 400;
-      letter-spacing: 0.3px;
-      color: #000;
-      line-height: 1;
-      cursor: pointer;
-      background: transparent;
-      border: none;
-      padding: 0;
-    }
+  font-size: 17px;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+  color: #000;
+  line-height: 1;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
+
+  /* THIS IS THE ONLY CHANGE: pin to top-right */
+  position: absolute;
+  top: 6px;
+  right: 18px;
+}
 
     .header {
       background: #a30b23;
