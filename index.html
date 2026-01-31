@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head> 
@@ -9,68 +8,56 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    .text {
-      font-size: 15px;
-      line-height: 1.38;
-      margin: 0 20px 24px;
-      text-align: center;
-      color: #7a7a7a;
-      font-weight: 600;
-    }
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-  body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-
-  background: #fafafa;   /* soft white */
-
-  color: #fff;
-  min-height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  padding-top: 20px;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #fafafa;   /* soft white */
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 20px;
+    }
 
     .ticket {
       width: 100%;
       max-width: 370px;
       background: #fdfdfd;
-      border-radius: 0px;
+      border-radius: 16px;           /* round all edges of ticket */
       overflow: hidden;
       box-shadow: 
-  0 5px 12px rgba(0, 0, 0, 0.17),
-  0 2px 4px rgba(0, 0, 0, 0.10);
+        0 5px 12px rgba(0, 0, 0, 0.17),
+        0 2px 4px rgba(0, 0, 0, 0.10);
       position: relative;
-      padding-top: 28px;
     }
 
-    .close {
-  position: absolute;
-  top: 6px;
-  right: 18px;
+    /* Top white strip with rounded top corners */
+    .top-strip {
+      background: #fdfdfd;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+      padding: 6px 18px;            /* space around Close text */
+      position: relative;
+    }
 
-  font-size: 17px;
-  font-weight: 400;
-  letter-spacing: 0.3px;
-  color: #000;
-
-  /* Remove box */
-  padding: 0;
-  border-radius: 0;
-  background: none;
-
-  cursor: pointer;
-  border: none;
-  line-height: 1;
-}
+    /* Close text */
+    .top-strip .close {
+      font-size: 17px;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+      color: #000;
+      line-height: 1;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
 
     .header {
       background: #a30b23;
@@ -80,7 +67,7 @@
       font-size: 16px;
       letter-spacing: 0.4px;
       color: white;
-      border-top-left-radius: 12px;   /* top-left curve */
+      border-top-left-radius: 12px;   
       border-top-right-radius: 12px;
     }
 
@@ -98,17 +85,22 @@
       height: 100% !important;
     }
 
-    .qr-container img {
-  
+    .text {
+      font-size: 15px;
+      line-height: 1.38;
+      margin: 0 20px 24px;
+      text-align: center;
+      color: #7a7a7a;
+      font-weight: 600;
     }
 
     .expiry-container {
-  position: relative;
-  height: 50px;           /* smaller vertical height */
-  margin: 0 14px 0;       /* remove bottom margin to eliminate gap */
-  border-radius: 12px 12px 0 0;
-  overflow: hidden;
-}
+      position: relative;
+      height: 50px;
+      margin: 0 14px 0;
+      border-radius: 12px 12px 0 0;
+      overflow: hidden;
+    }
 
     .expiry-strip {
       position: absolute;
@@ -119,36 +111,31 @@
     .strip { flex: 1; }
 
     .expiry-time {
-  position: absolute;
-  inset: 0;                     /* stretch over container */
-  display: flex;                 /* flex centering */
-  align-items: center;           /* vertical center */
-  justify-content: center;       /* horizontal center */
-  color: white;
-  font-size: 22px;
-  font-weight: 500;
-  z-index: 2;
-  text-shadow: 
-  /* solid outline ring */
-  -1px -1px 0 #000,
-   1px -1px 0 #000,
-  -1px  1px 0 #000,
-   1px  1px 0 #000,
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 500;
+      z-index: 2;
+      text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000,
+        0 0 3px rgba(0,0,0,0.9),
+        4px 4px 8px rgba(0,0,0,1);
+      white-space: nowrap;
+      animation: sway 2.8s infinite ease-in-out;
+    }
 
-  /* soft blur halo */
-  0 0 3px rgba(0,0,0,0.9),
-
-  /* your heavy shadow */
-  4px 4px 8px rgba(0,0,0,1);
-  white-space: nowrap;
-  animation: sway 2.8s infinite ease-in-out; /* keep swaying */
-}
-
-@keyframes sway {
-  0%   { transform: translateX(-50px); }
-  50%  { transform: translateX(50px); }
-  100% { transform: translateX(-50px); }
-}
+    @keyframes sway {
+      0%   { transform: translateX(-50px); }
+      50%  { transform: translateX(50px); }
+      100% { transform: translateX(-50px); }
+    }
 
     .verified {
       background: #ffe74c;
@@ -161,24 +148,15 @@
       border-radius: 0px;
     }
 
-    /* LOGO AREA */
     .logo-area {
       padding: 18px 20px 16px;
       text-align: center;
       background: linear-gradient(to bottom, #4f1276, #56278f);
       margin: 0 14px;
       border-bottom-left-radius: 16px;
-  border-bottom-right-radius: 16px;
+      border-bottom-right-radius: 16px;
     }
 
-    /* UPDATED n LOGO (matches app style) */
-        /* The main hexagon container (hollow center) */
-        /* THE PERFECT 6-SIDED RING */
-        /* THE FLATTENED 6-SIDED RING WITH FAINT WHITE */
-        /* THE FLATTENED 6-SIDED RING WITH THICKER FAINT WHITE BORDER */
-        /* FLATTENED HEXAGON - THICK RING - MATCHED PURPLE */
-        /* FLATTENED HEXAGON - THICKER & DARKER FAINT WHITE */
-     /* FLATTENED HEXAGON - THICKER & HIGH VISIBILITY */
     .logo-n {
       width: 90px;
       height: 70px; 
@@ -188,7 +166,6 @@
       justify-content: center;
       position: relative;
       border-radius: 0 0 12px 12px;
-      /* Increased opacity to 0.7 for better visibility */
       background: rgba(255, 255, 255, 0.7); 
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
     }
@@ -197,7 +174,6 @@
       content: "";
       position: absolute;
       inset: 6px; 
-      /* Matches your logo-area background exactly */
       background: #4b0082; 
       clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
       z-index: 1;
@@ -207,16 +183,12 @@
       position: relative;
       font-size: 70px; 
       font-weight: bold;
-      /* Increased opacity to 0.7 to match the ring visibility */
       color: rgba(255, 255, 255, 0.7); 
       font-family: Arial, sans-serif;
       z-index: 2;
       line-height: 1;
       display: block;
       margin-top: -10px; 
-
-
-
     }
 
     .cashback {
@@ -243,7 +215,10 @@
 <body>
 
 <div class="ticket">
-  <div class="close">Close</div>
+  <!-- Rounded white top strip -->
+  <div class="top-strip">
+    <div class="close">Close</div>
+  </div>
 
   <div class="header">
     nBus - 1618 - Direct Issue nBus - 1618
@@ -289,22 +264,21 @@
     qrContainer.innerHTML = ""; // clear old QR code
 
     new QRCode(qrContainer, {
-  text: "nBus-1618-DirectIssue-nBus-1618-" + Date.now(),  // longer text → higher version → more likely to have central alignment pattern
-  width: 200,
-  height: 200,
-  colorDark: "#000000",
-  colorLight: "#ffffff",
-  correctLevel: QRCode.CorrectLevel.H  // This is what triggers alignment patterns, including the middle one
-});
+      text: "nBus-1618-DirectIssue-nBus-1618-" + Date.now(),
+      width: 200,
+      height: 200,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
   }
 
   // Generate QR code initially
   generateQRCode();
-
-  // Refresh QR code every 3 seconds
+  // Refresh QR code every ~3 seconds
   setInterval(generateQRCode, 2900);
 
-  // Expiry timer function (unchanged)
+  // Expiry timer
   function updateExpiry() {
     const now = new Date();
 
@@ -326,7 +300,6 @@
     document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
   }
 
-  // Update expiry timer immediately and every second
   updateExpiry();
   setInterval(updateExpiry, 1000);
 </script>
