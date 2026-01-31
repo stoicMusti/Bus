@@ -42,11 +42,11 @@
       background: #fdfdfd;
       border-top-left-radius: 16px;
       border-top-right-radius: 16px;
-      padding: 6px 18px;            /* space around Close text */
-      position: relative;
+      padding: 6px 18px;            /* keep exactly as before */
+      position: relative;            /* needed for absolute positioning of Close */
     }
 
-    /* Close text */
+    /* Close text positioned top-right without changing padding */
     .top-strip .close {
       font-size: 17px;
       font-weight: 400;
@@ -57,6 +57,11 @@
       background: transparent;
       border: none;
       padding: 0;
+
+      /* ONLY change: pin to top-right */
+      position: absolute;
+      top: 0;
+      right: 0;
     }
 
     .header {
