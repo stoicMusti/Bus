@@ -31,6 +31,7 @@
       max-width: 370px;
       background: #fdfdfd;
       margin: 0 12px;
+      
       border-radius: 16px;           /* round all edges of ticket */
       overflow: hidden;
       box-shadow: 
@@ -41,16 +42,17 @@
 
     /* Top white strip with rounded top corners */
     .top-strip {
-  background: none;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  padding: 0 18px 6px;  
-  margin-bottom: 4px;
-  display: flex;              /* use flexbox */
-  justify-content: flex-end;  /* push content to the right */
-  align-items: center;        /* vertically center inside the padding */
-}
+  position: absolute;      /* take it out of layout */
+  top: 6px;
+  right: 18px;
 
+  background: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  align-items: center;
+}
 .top-strip .close {
   font-size: 17px;
   font-weight: 347;
