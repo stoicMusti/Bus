@@ -41,25 +41,20 @@
 
     /* Top white strip with rounded top corners */
     .top-strip {
-  background: #fafafa;
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
-  padding: 6px 18px;          
-  display: flex;              /* use flexbox */
-  justify-content: flex-end;  /* push content to the right */
-  align-items: center;        /* vertically center inside the padding */
+  background: transparent;
+  padding: 0;
+  margin: 0 0 8px 0;
+
+  display: flex;
+  justify-content: flex-end;
 }
 
 .top-strip .close {
   font-size: 17px;
-  font-weight: 347;
-  letter-spacing: 0.3px;
+  font-weight: 360;
   color: #000;
-  line-height: 1;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0;
+
+  padding: 6px 18px; /* space without making a strip */
 }
     .header {
       background: #a30b23;
