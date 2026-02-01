@@ -43,7 +43,7 @@
     /* Top white strip with rounded top corners */
     .top-strip {
   position: absolute;
-  top: -22px;        /* move it above the ticket */
+  top: -18px;        /* floats above ticket */
   right: 18px;
 
   background: none;
@@ -52,6 +52,7 @@
 
   display: flex;
   align-items: center;
+  z-index: 10;       /* make sure it stays visible */
 }
 .top-strip .close {
   font-size: 17px;
