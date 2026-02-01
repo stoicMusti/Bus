@@ -41,23 +41,25 @@
 
     /* Top white strip with rounded top corners */
     .top-strip {
-  width: 100%;
-  max-width: 370px;
-  margin: 0 auto 6px auto;
-
-  display: flex;
-  justify-content: flex-end;
-
-  background: transparent;
-  padding: 6px 18px;
+  background: #fafafa;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  padding: 6px 18px;          
+  display: flex;              /* use flexbox */
+  justify-content: flex-end;  /* push content to the right */
+  align-items: center;        /* vertically center inside the padding */
 }
 
 .top-strip .close {
   font-size: 17px;
-  font-weight: 360;
+  font-weight: 347;
+  letter-spacing: 0.3px;
   color: #000;
-
-  padding: 6px 18px; /* space without making a strip */
+  line-height: 1;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
     .header {
       background: #a30b23;
@@ -214,11 +216,12 @@
 
 <body>
 
-<div class="top-strip">
-  <div class="close">Close</div>
-</div>
-
 <div class="ticket">
+  <!-- Rounded white top strip -->
+  <div class="top-strip">
+    <div class="close">Close</div>
+  </div>
+
   <div class="header">
     nBus - 1618 - Direct Issue nBus - 1618
   </div>
