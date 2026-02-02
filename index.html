@@ -1,11 +1,10 @@
-<!-- FORCE REBUILD -->
 <!DOCTYPE html>
 <html lang="en">
 <head> 
   <meta charset="UTF-8" />
   <meta name="color-scheme" content="light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>test 123</title>
+  <title>nBus Ticket</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
@@ -114,22 +113,25 @@
     .strip { flex: 1; }
 
     .expiry-time {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 22px;
-  font-weight: 500;
-  z-index: 2;
-
-  /* LIGHT shadow only */
-  text-shadow: 0 0 3px rgba(0,0,0,0.5);
-
-  white-space: nowrap;
-  animation: sway 2.8s infinite ease-in-out;
-}
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 22px;
+      font-weight: 500;
+      z-index: 2;
+      text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px  1px 0 #000,
+        1px  1px 0 #000,
+        0 0 3px rgba(0,0,0,0.9),
+        4px 4px 8px rgba(0,0,0,1);
+      white-space: nowrap;
+      animation: sway 2.8s infinite ease-in-out;
+    }
 
     @keyframes sway {
       0%   { transform: translateX(-50px); }
@@ -236,10 +238,10 @@
 
   <div class="expiry-container">
     <div class="expiry-strip">
-  <div class="strip" style="background:red"></div>
-  <div class="strip" style="background:yellow"></div>
-  <div class="strip" style="background:blue"></div>
-</div>
+      <div class="strip" style="background:#5a4fcf"></div>
+      <div class="strip" style="background:#ff6fff"></div>
+      <div class="strip" style="background:#c56687"></div>
+    </div>
     <div class="expiry-time" id="expiry-time"></div>
   </div>
 
