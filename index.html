@@ -160,26 +160,42 @@
 }
 
     .logo-n {
-      width: 90px;
-      height: 70px; 
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-radius: 0 0 12px 12px;
-      background: rgba(255, 255, 255, 0.7); 
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-    }
+  width: 90px;
+  height: 70px; 
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  border-radius: 18px; /* softens corners */
+
+  clip-path: polygon(
+    28% 4%, 72% 4%,
+    96% 50%,
+    72% 96%, 28% 96%,
+    4% 50%
+  );
+}
 
     .logo-n::after {
-      content: "";
-      position: absolute;
-      inset: 6px; 
-      background: #5A3B63; 
-      clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
-      z-index: 1;
-    }
+  content: "";
+  position: absolute;
+  inset: 6px; 
+  background: #5A3B63; 
+  z-index: 1;
+
+  border-radius: 14px;
+
+  clip-path: polygon(
+    28% 4%, 72% 4%,
+    96% 50%,
+    72% 96%, 28% 96%,
+    4% 50%
+  );
+}
 
     .logo-n span {
       position: relative;
