@@ -1,50 +1,53 @@
-// Function to generate the Aztec Code (the "square in the middle" style)
+// 1. Function to generate the Aztec Code (the "square in the middle")
 function generateAztecCode() {
+  const canvas = document.getElementById('qrcode');
+  if (!canvas) return;
+
   try {
-    // This uses the bwip-js library to render an Aztec barcode onto the canvas
-    bwipjs.toCanvas('qrcode', {
-      bcid:        'aztec',       // Sets the type to Aztec
-      text:        'nBus-1618-DirectIssue-' + Date.now(), 
-      scale:       6,             // Adjusts the resolution/size
-      height:      50,            // Aspect ratio (Aztec is square)
+    // bwipjs renders the Aztec pattern specifically
+    bwipjs.toCanvas(canvas, {
+      bcid:        'aztec',       // Sets the barcode type to Aztec
+      text:        'nBus-1618-DirectIssue-nBus-1618-' + Date.now(),
+      scale:       5,             // Adjusts the size of the pixels
+      height:      50,            // Aztec codes are square
       width:       50,
-      includetext: false,         // Keeps the UI clean by hiding data text
+      includetext: false,         // Keeps the data text hidden
     });
   } catch (e) {
     console.error("Barcode generation error:", e);
   }
 }
 
-// Initial generation
+// 2. Initial generation and 3-second refresh to keep it "live"
 generateAztecCode();
-
-// Refresh the code every 3 seconds to keep it "live"
 setInterval(generateAztecCode, 3000);
 
-// Live clock logic for the swaying expiry text
+// 3. Clock logic for the swaying expiry timer
 function updateExpiry() {
   const now = new Date();
 
   // Format: HH:MM:SS
-  const timeStr = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
+  const timeStr = now.toLocaleTimeString('en-GB', {
     hour12: false,
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit'
-  }).format(now);
+  });
 
   // Format: DD/MM/YYYY
-  const dateStr = new Intl.DateTimeFormat('en-GB', {
-    timeZone: 'Europe/London',
+  const dateStr = now.toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric'
-  }).format(now);
+  });
 
-  document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
+  // Update the text in the swaying element
+  const expiryElement = document.getElementById('expiry-time');
+  if (expiryElement) {
+    expiryElement.textContent = `${timeStr} ${dateStr}`;
+  }
 }
 
-// Update clock immediately and then every second
+// 4. Run the clock immediately and update it every second
 updateExpiry();
 setInterval(updateExpiry, 1000);
