@@ -4,15 +4,19 @@
     const qrContainer = document.getElementById("qrcode");
     qrContainer.innerHTML = ""; // clear old QR code
 
-    new QRCode(qrContainer, {
-      text: "nBus-1618-DirectIssue-nBus-1618-" + Date.now(),
-      width: 200,
-      height: 200,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H,
-      version: 10 // ← forces alignment square in middle
-    });
+    // Force version 15 so alignment square appears
+    const qr = qrcode(15, 'H');
+
+    qr.addData("nBus-1618-DirectIssue-nBus-1618-" + Date.now());
+    qr.make();
+
+    // create image inside your existing container
+    qrContainer.innerHTML = qr.createImgTag(4, 0);
+
+    // make image fill container perfectly
+    const img = qrContainer.querySelector("img");
+    img.style.width = "100%";
+    img.style.height = "100%";
   }
 
   // Generate QR code initially
@@ -40,7 +44,8 @@
       year: 'numeric'
     }).format(now);
 
-    document.getElementById('expiry-time').textContent = `${timeStr} ${dateStr}`;
+    document.getElementById('expiry-time').textContent =
+      `${timeStr} ${dateStr}`;
   }
 
   updateExpiry();
