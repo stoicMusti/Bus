@@ -1,24 +1,24 @@
 <script>
   // Function to generate QR code
   function generateQRCode() {
-    const qrContainer = document.getElementById("qrcode");
-    qrContainer.innerHTML = ""; // clear old QR code
+  const qrContainer = document.getElementById("qrcode");
+  qrContainer.innerHTML = "";
 
-    // Force version 15 so alignment square appears
-    const qr = qrcode(15, 'H');
+  // Make the data very long to force larger QR version
+  const longData =
+    "nBus-1618-DirectIssue-nBus-1618-" +
+    Date.now() +
+    "-WestMidlands-Unlimited-Travel-NationalExpress-nBus-Scheme-Validation-Verification-Code-Active";
 
-    qr.addData("nBus-1618-DirectIssue-nBus-1618-" + Date.now());
-    qr.make();
-
-    // create image inside your existing container
-    qrContainer.innerHTML = qr.createImgTag(4, 0);
-
-    // make image fill container perfectly
-    const img = qrContainer.querySelector("img");
-    img.style.width = "100%";
-    img.style.height = "100%";
-  }
-
+  new QRCode(qrContainer, {
+    text: longData,
+    width: 200,
+    height: 200,
+    colorDark: "#000000",
+    colorLight: "#ffffff",
+    correctLevel: QRCode.CorrectLevel.H
+  });
+}
   // Generate QR code initially
   generateQRCode();
 
