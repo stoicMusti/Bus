@@ -219,6 +219,35 @@
       margin-top: -4px;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+      
+      #qrcode {
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+}
+
+#qrcode::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60px;
+  height: 60px;
+  transform: translate(-50%, -50%);
+  background: white;
+  border: 6px solid black;
+  box-sizing: border-box;
+}
+
+#qrcode::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  transform: translate(-50%, -50%);
+  background: black;
 }
   </style>
 </head>
