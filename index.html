@@ -86,28 +86,35 @@
     }
 
     #qrcode {
-      width: 100% !important;
-      height: 100% !important;
-      position: relative;
-    }
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-    /* PERFECT MULTI-RING CENTER MARKER */
-    #qrcode::after {
+#qrcode canvas {
+  display: block;
+}
+
+/* perfectly centered rings with thinner dot */
+#qrcode::after {
   content: "";
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 6px;   /* center dot */
-  height: 6px;
+  width: 4px;   /* thinner dot */
+  height: 4px;
   background: black;
   transform: translate(-50%, -50%);
   box-shadow:
-    0 0 0 4px white,   /* gap */
-    0 0 0 8px black,   /* ring 3 */
-    0 0 0 12px white,  /* gap */
-    0 0 0 16px black,  /* ring 2 */
-    0 0 0 20px white,  /* gap */
-    0 0 0 24px black;  /* ring 1 outer */
+    0 0 0 4px white,
+    0 0 0 8px black,
+    0 0 0 12px white,
+    0 0 0 16px black,
+    0 0 0 20px white,
+    0 0 0 24px black;
 }
     .text {
       font-size: 15px;
