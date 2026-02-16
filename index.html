@@ -97,30 +97,17 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 48px;
-  height: 48px;
+  width: 6px;   /* center dot */
+  height: 6px;
+  background: black;
   transform: translate(-50%, -50%);
-  background:
-    /* center dot */
-    linear-gradient(black, black) center/6px 6px no-repeat,
-
-    /* white gap */
-    linear-gradient(white, white) center/14px 14px no-repeat,
-
-    /* ring 3 */
-    linear-gradient(black, black) center/22px 22px no-repeat,
-
-    /* white gap */
-    linear-gradient(white, white) center/30px 30px no-repeat,
-
-    /* ring 2 */
-    linear-gradient(black, black) center/38px 38px no-repeat,
-
-    /* white gap */
-    linear-gradient(white, white) center/44px 44px no-repeat,
-
-    /* ring 1 outer */
-    linear-gradient(black, black) center/48px 48px no-repeat;
+  box-shadow:
+    0 0 0 4px white,   /* gap */
+    0 0 0 8px black,   /* ring 3 */
+    0 0 0 12px white,  /* gap */
+    0 0 0 16px black,  /* ring 2 */
+    0 0 0 20px white,  /* gap */
+    0 0 0 24px black;  /* ring 1 outer */
 }
     .text {
       font-size: 15px;
