@@ -8,31 +8,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
   <style>
-    .corner-overlay {
-  position: absolute;
-  width: 40px;   /* size of the overlay */
-  height: 40px;
-  background: white; /* match QR background */
-  border-radius: 6px; /* optional styling */
-  pointer-events: none; /* allows QR scanning */
-  z-index: 3;
-}
-
-/* Position each overlay */
-.corner-overlay.top-left {
-  top: 0;
-  left: 0;
-}
-
-.corner-overlay.top-right {
-  top: 0;
-  right: 0;
-}
-
-.corner-overlay.bottom-left {
-  bottom: 0;
-  left: 0;
-}
     * {
       margin: 0;
       padding: 0;
@@ -286,12 +261,8 @@
   </div>
 
   <div class="qr-container">
-  <div id="qrcode">
-    <div class="corner-overlay top-left"></div>
-    <div class="corner-overlay top-right"></div>
-    <div class="corner-overlay bottom-left"></div>
+    <div id="qrcode"></div>
   </div>
-</div>
 
   <div class="text">
     Unlimited travel on all National Express buses and any other bus operator that is part of the nBus scheme within the West Midlands nBus zone
