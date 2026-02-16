@@ -97,17 +97,30 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   transform: translate(-50%, -50%);
   background:
-    linear-gradient(black, black) center/4px 4px no-repeat,    /* center dot (smaller) */
-    linear-gradient(white, white) center/10px 10px no-repeat,
-    linear-gradient(black, black) center/16px 16px no-repeat,  /* ring 3 */
-    linear-gradient(white, white) center/24px 24px no-repeat,
-    linear-gradient(black, black) center/32px 32px no-repeat,  /* ring 2 */
-    linear-gradient(white, white) center/38px 38px no-repeat,
-    linear-gradient(black, black) center/44px 44px no-repeat;  /* ring 1 outer */
+    /* center dot */
+    linear-gradient(black, black) center/6px 6px no-repeat,
+
+    /* white gap */
+    linear-gradient(white, white) center/14px 14px no-repeat,
+
+    /* ring 3 */
+    linear-gradient(black, black) center/22px 22px no-repeat,
+
+    /* white gap */
+    linear-gradient(white, white) center/30px 30px no-repeat,
+
+    /* ring 2 */
+    linear-gradient(black, black) center/38px 38px no-repeat,
+
+    /* white gap */
+    linear-gradient(white, white) center/44px 44px no-repeat,
+
+    /* ring 1 outer */
+    linear-gradient(black, black) center/48px 48px no-repeat;
 }
     .text {
       font-size: 15px;
