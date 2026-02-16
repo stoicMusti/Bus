@@ -93,21 +93,20 @@
 
     /* PERFECT MULTI-RING CENTER MARKER */
     #qrcode::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 72px;
-      height: 72px;
-      transform: translate(-50%, -50%);
-      background:
-        linear-gradient(black, black) center/16px 16px no-repeat,
-        linear-gradient(white, white) center/32px 32px no-repeat,
-        linear-gradient(black, black) center/48px 48px no-repeat,
-        linear-gradient(white, white) center/64px 64px no-repeat,
-        linear-gradient(black, black) center/72px 72px no-repeat;
-    }
-
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  background:
+    linear-gradient(black, black) center/8px 8px no-repeat,    /* center dot */
+    linear-gradient(white, white) center/16px 16px no-repeat,
+    linear-gradient(black, black) center/24px 24px no-repeat,
+    linear-gradient(white, white) center/34px 34px no-repeat,
+    linear-gradient(black, black) center/44px 44px no-repeat;
+}
     .text {
       font-size: 15px;
       line-height: 1.38;
