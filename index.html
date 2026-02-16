@@ -91,29 +91,21 @@
       position: relative;
     }
 
-    /* CENTER SQUARE OVERLAY (added only this) */
+    /* PERFECT MULTI-RING CENTER MARKER */
     #qrcode::after {
       content: "";
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 60px;
-      height: 60px;
+      width: 72px;
+      height: 72px;
       transform: translate(-50%, -50%);
-      background: white;
-      border: 6px solid black;
-      box-sizing: border-box;
-    }
-
-    #qrcode::before {
-      content: "";
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 24px;
-      height: 24px;
-      transform: translate(-50%, -50%);
-      background: black;
+      background:
+        linear-gradient(black, black) center/16px 16px no-repeat,
+        linear-gradient(white, white) center/32px 32px no-repeat,
+        linear-gradient(black, black) center/48px 48px no-repeat,
+        linear-gradient(white, white) center/64px 64px no-repeat,
+        linear-gradient(black, black) center/72px 72px no-repeat;
     }
 
     .text {
