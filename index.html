@@ -16,7 +16,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #fafafa;   /* soft white */
+      background: #fafafa;
       color: #fff;
       min-height: 100vh;
       display: flex;
@@ -31,7 +31,7 @@
       max-width: 370px;
       background: #fdfdfd;
       margin: 0 12px;
-      border-radius: 16px;           /* round all edges of ticket */
+      border-radius: 16px;
       overflow: hidden;
       box-shadow: 
         0 5px 12px rgba(0, 0, 0, 0.17),
@@ -39,28 +39,28 @@
       position: relative;
     }
 
-    /* Top white strip with rounded top corners */
     .top-strip {
-  background: #fafafa;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
-  padding: 6px 18px;          
-  display: flex;              /* use flexbox */
-  justify-content: flex-end;  /* push content to the right */
-  align-items: center;        /* vertically center inside the padding */
-}
+      background: #fafafa;
+      border-top-left-radius: 6px;
+      border-top-right-radius: 6px;
+      padding: 6px 18px;          
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
 
-.top-strip .close {
-  font-size: 17px;
-  font-weight: 347;
-  letter-spacing: 0.3px;
-  color: #000;
-  line-height: 1;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0;
-}
+    .top-strip .close {
+      font-size: 17px;
+      font-weight: 347;
+      letter-spacing: 0.3px;
+      color: #000;
+      line-height: 1;
+      cursor: pointer;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
     .header {
       background: #a30b23;
       padding: 10px 4px;
@@ -88,6 +88,32 @@
     #qrcode {
       width: 100% !important;
       height: 100% !important;
+      position: relative;
+    }
+
+    /* CENTER SQUARE OVERLAY (added only this) */
+    #qrcode::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 60px;
+      height: 60px;
+      transform: translate(-50%, -50%);
+      background: white;
+      border: 6px solid black;
+      box-sizing: border-box;
+    }
+
+    #qrcode::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      transform: translate(-50%, -50%);
+      background: black;
     }
 
     .text {
@@ -154,13 +180,13 @@
     }
 
     .logo-area {
-  padding: 18px 20px 16px;
-  text-align: center;
-  background: #5A3B63; /* Eggplant purple */
-  margin: 0 14px;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-}
+      padding: 18px 20px 16px;
+      text-align: center;
+      background: #5A3B63;
+      margin: 0 14px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
 
     .logo-n {
       width: 90px;
@@ -185,18 +211,18 @@
     }
 
     .logo-n span {
-  position: relative;
-  font-size: 70px; 
-  font-weight: 600;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  letter-spacing: -2px;
-  color: rgba(255, 255, 255, 0.7); 
-  z-index: 2;
-  line-height: 1;
-  display: block;
-  margin-top: -10px;
-  transform: scaleY(0.9);
-}
+      position: relative;
+      font-size: 70px; 
+      font-weight: 600;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      letter-spacing: -2px;
+      color: rgba(255, 255, 255, 0.7); 
+      z-index: 2;
+      line-height: 1;
+      display: block;
+      margin-top: -10px;
+      transform: scaleY(0.9);
+    }
 
     .cashback {
       background: #017FAF;
@@ -217,45 +243,15 @@
       color: #017FAF;
       border-top: 1px dashed #444;
       margin-top: -4px;
-  border-bottom-left-radius: 6px;
-  border-bottom-right-radius: 6px;
-      
-      #qrcode {
-  width: 100% !important;
-  height: 100% !important;
-  position: relative;
-}
-
-#qrcode::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  transform: translate(-50%, -50%);
-  background: white;
-  border: 6px solid black;
-  box-sizing: border-box;
-}
-
-#qrcode::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  transform: translate(-50%, -50%);
-  background: black;
-}
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
   </style>
 </head>
 
 <body>
 
 <div class="ticket">
-  <!-- Rounded white top strip -->
   <div class="top-strip">
     <div class="close">Close</div>
   </div>
@@ -298,10 +294,9 @@
 </div>
 
 <script>
-  // Function to generate QR code
   function generateQRCode() {
     const qrContainer = document.getElementById("qrcode");
-    qrContainer.innerHTML = ""; // clear old QR code
+    qrContainer.innerHTML = "";
 
     new QRCode(qrContainer, {
       text: "nBus-1618-DirectIssue-nBus-1618-" + Date.now(),
@@ -313,12 +308,9 @@
     });
   }
 
-  // Generate QR code initially
   generateQRCode();
-  // Refresh QR code every ~3 seconds
   setInterval(generateQRCode, 2900);
 
-  // Expiry timer
   function updateExpiry() {
     const now = new Date();
 
@@ -343,5 +335,6 @@
   updateExpiry();
   setInterval(updateExpiry, 1000);
 </script>
+
 </body>
 </html>
